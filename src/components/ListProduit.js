@@ -17,7 +17,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import ListSubheader from '@mui/material/ListSubheader';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+// import { green } from '@mui/material/colors';
+// import Icon from '@mui/material/Icon';
 function ListProduit() {
   const style = {
     // position: 'absolute' as 'absolute',
@@ -106,7 +112,15 @@ function ListProduit() {
         setData_type(evt.currentTarget.value);
         setEntity(evt.currentTarget.value);
       }
+// methode ajout
+handleChange =e => {
+  this.setState({value: e.target.value});
+}
 
+handleSubmit(event) {
+  alert('Le nom a été soumis : ' + this.state.value);
+  event.preventDefault();
+}
 
       const [open, setOpen] = useState(false);
 
@@ -159,6 +173,7 @@ function ListProduit() {
 
 
 
+  
 
   <table class="table table-">
   <thead>
@@ -232,11 +247,28 @@ function ListProduit() {
 </table>
       </div>
     </div>
-  </div>
+  </div><button class="btn btn-secondary dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Ajoutement Par
+  </button>
+  <FormControl sx={{ m: 1, minWidth: 30 }}>
+        {/* <InputLabel htmlFor="grouped-native-select">Ajustement</InputLabel> */}
+        <Select native defaultValue="" id="grouped-native-select" label="Ajustement">
+          <option aria-label="None" value="" />
+          <optgroup label="Category 1">
+            <option value={1}>Entity</option>
+            <option value={2}>code</option>
+          </optgroup>
+          <optgroup label="Category 2">
+            <option value={3}>hello</option>
+            <option value={4}>node</option>
+          </optgroup>
+        </Select>
+      </FormControl>
+     
   <div class="col-sm-6">
-    <div class="card">
+    <div>
       <div class="card-body">
-        <h5 class="card-title">ADJUSTEMENT Par</h5>
+        
         <table class="table">
   <thead>
     <tr>
@@ -249,9 +281,7 @@ function ListProduit() {
       <td scope="row">
 
       <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
+
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Action</a>
     <a class="dropdown-item" href="#">Another action</a>
@@ -355,25 +385,25 @@ function ListProduit() {
   <div className="row mb-3">
     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">pilare</label>
     <div className="col-sm-10">
-    <input type="text"name="pilare"onChange={ (event) => setPilare(event.target.value) }value={pilare} />
+    <input type="text"  name="pilare"onChange={ (event) => setPilare(event.target.value) }value={pilare} />
     </div>
   </div>
   <div className="row mb-3">
     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">phase</label>
     <div className="col-sm-10">
-    <input type="text"name="phase"onChange={ (event) => setPhase(event.target.value) }value={phase} />
+    <input type="text" className="form-control"  name="phase"onChange={ (event) => setPhase(event.target.value) }value={phase} />
     </div>
   </div>
   <div className="row mb-3">
     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Year</label>
     <div className="col-sm-10">
-    <input type="text"name="Year"onChange={ (event) => setYear(event.target.value) }value={Year} />
+    <input type="text"name="Year"  onChange={ (event) => setYear(event.target.value) }value={Year} />
     </div>
   </div>
   <div className="row mb-3">
     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Month</label>
     <div className="col-sm-10">
-    <input type="text"name="Month"onChange={ (event) => setMonth(event.target.value) }value={Month} />
+    <input type="select"  name="Month"onChange={ (event) => setMonth(event.target.value) }value={Month} />
     </div>
   </div>
   <div className="row mb-3">
@@ -384,15 +414,15 @@ function ListProduit() {
   </div>
 
   <div className="row mb-3">
-    <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Data_type</label>
+    <label htmlFor="inputPassword3"  className="col-sm-2 col-form-label">Data_type</label>
     <div className="col-sm-10">
-    <input type="text"name="Data_type"  onChange={ (event) => setData_type(event.target.value) }value={Data_type} />
+    <input type="text"name="Data_type"     onChange={ (event) => setData_type(event.target.value) }value={Data_type} />
     </div>
   </div>
   <div className="row mb-3">
-    <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Entity</label>
+    <label htmlFor="inputPassword3"  className="col-sm-2 col-form-label">Entity</label>
     <div className="col-sm-10">
-    <input type="text"name="Entity" onChange={ (event) => setEntity (event.target.value) }value={Entity} />
+    <input type="text"name="Entity"   onChange={ (event) => setEntity (event.target.value) }value={Entity} />
     </div>
   </div>
   <div className="row mb-3">
@@ -406,19 +436,15 @@ function ListProduit() {
     <div className="col-sm-10 offset-sm-2">
     </div>
   </div>
+  <Button variant="secondary" type='submit' onClick={handleClose}>
+            Ajouter
+          </Button>
   
 </form>
 
 
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="success" onClick={handleClose}>
-             Ajouter
-          </Button>
-        </Modal.Footer>
+        
       </Modal>
      
 
