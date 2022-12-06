@@ -12,6 +12,11 @@ import { Button } from 'react-bootstrap';
 import './ListProduit.css';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 function ListProduit() {
   const style = {
@@ -25,9 +30,6 @@ function ListProduit() {
     boxShadow: 24,
     p: 4,
   };
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
 
 
 
@@ -105,9 +107,46 @@ function ListProduit() {
         setEntity(evt.currentTarget.value);
       }
 
+
+      const [open, setOpen] = useState(false);
+
+      const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClosee = () => {
+        setOpen(false);
+      };
   return (
+
+
+    
     // var produit =produit
     <div>
+
+
+      <Dialog
+        open={open}
+        // onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Chargement de fichier?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+         Voulez vous charger le fichier
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+         
+          <Button onClick={handleClosee} autoFocus>
+            Non
+          </Button>
+           <Button onClick={handleClosee}>Oui</Button>
+        </DialogActions>
+      </Dialog>
       <nav class="navbar navbar-expand-lg  z">
   <div class="container">
     <a class="navbar-brand" href="#">home</a>
@@ -117,6 +156,9 @@ function ListProduit() {
 </nav>
 
   <br /> <br />  <br />
+
+
+
 
   <table class="table table-">
   <thead>
@@ -167,6 +209,7 @@ function ListProduit() {
     <h5 class="card-title">Specification</h5>
       <div class="card-body">
       <table class="table">
+        <br /> <br />  <br />
   <thead>
     <tr>
 
@@ -229,21 +272,8 @@ function ListProduit() {
 <br /> <br />  <br />
 {/* 
   <Button onClick={handleOpen}>Open modal</Button> */}
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
+      
+     
   <thead className="form">
       <tr>
         <th>
@@ -259,7 +289,7 @@ function ListProduit() {
           <a className="nav-link"  href="javascript:void(0)" onClick={handleShow}>ajouter</a>
         </li>
         <li className="nav-item"><i class="bi bi-cloud-upload-fill"></i>
-          <a className="nav-link" href="javascript:void(0)">charger</a>
+          <a className="nav-link" href="javascript:void(0)"  onClick={handleClickOpen}>charger</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="javascript:void(0)">Liste des ajustement</a>
@@ -312,7 +342,7 @@ function ListProduit() {
       </Table>
     </TableContainer>
 
-   
+
     {/* corps modal */}
 
     <Modal show={show} onHide={handleClose}>
