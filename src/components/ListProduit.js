@@ -23,6 +23,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './ListProduit.css';
+import FormProduit from './FormProduit';
 // import { green } from '@mui/material/colors';
 // import Icon from '@mui/material/Icon';
 function ListProduit() {
@@ -372,67 +373,7 @@ function ListProduit() {
         </Modal.Header>
         <Modal.Body>
 
-        <form>
-  <div className="row mb-3">
-    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">pilare</label>
-    <div className="col-sm-10">
-    <input type="text"  name="pilare"onChange={ (event) => setPilare(event.target.value) }value={pilare} />
-    </div>
-  </div>
-  <div className="row mb-3">
-    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">phase</label>
-    <div className="col-sm-10">
-    <input type="text" className="form-control"  name="phase"onChange={ (event) => setPhase(event.target.value) }value={phase} />
-    </div>
-  </div>
-  <div className="row mb-3">
-    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Year</label>
-    <div className="col-sm-10">
-    <input type="text"name="Year"  onChange={ (event) => setYear(event.target.value) }value={Year} />
-    </div>
-  </div>
-  <div className="row mb-3">
-    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Month</label>
-    <div className="col-sm-10">
-    <input type="select"  name="Month"onChange={ (event) => setMonth(event.target.value) }value={Month} />
-    </div>
-  </div>
-  <div className="row mb-3">
-    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Cumul_type</label>
-    <div className="col-sm-10">
-    {/* <input type="text"name="Cumul_type"onChange={ (event) => setCumul_type(event.target.value) }value={Cumul_type} /> */}
-    </div>
-  </div>
-
-  <div className="row mb-3">
-    <label htmlFor="inputPassword3"  className="col-sm-2 col-form-label">Data_type</label>
-    <div className="col-sm-10">
-    <input type="text"name="Data_type"     onChange={ (event) => setData_type(event.target.value) }value={Data_type} />
-    </div>
-  </div>
-  <div className="row mb-3">
-    <label htmlFor="inputPassword3"  className="col-sm-2 col-form-label">Entity</label>
-    <div className="col-sm-10">
-    <input type="text"name="Entity"   onChange={ (event) => setEntity (event.target.value) }value={Entity} />
-    </div>
-  </div>
-  <div className="row mb-3">
-    <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Indicator</label>
-    <div className="col-sm-10">
-      <input type="text" className="form-control" name="Indicator" id="inputPassword" />
-    </div>
-  </div>
-
-  <div className="row mb-3">
-    <div className="col-sm-10 offset-sm-2">
-    </div>
-  </div>
-  <Button variant="secondary" type='submit' onClick={handleClose}>
-            Ajouter
-          </Button>
-  
-</form>
-
+       <FormProduit/>
 
         </Modal.Body>
         
