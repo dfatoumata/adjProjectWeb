@@ -22,20 +22,11 @@ import MenuItem from '@mui/material/MenuItem';
 import ListSubheader from '@mui/material/ListSubheader';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import './ListProduit.css';
 // import { green } from '@mui/material/colors';
 // import Icon from '@mui/material/Icon';
 function ListProduit() {
-  const style = {
-    // position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+ 
 
 
 
@@ -113,14 +104,14 @@ function ListProduit() {
         setEntity(evt.currentTarget.value);
       }
 // methode ajout
-handleChange =e => {
-  this.setState({value: e.target.value});
-}
+// handleChange =e => {
+//   this.setState({value: event.target.value});
+// }
 
-handleSubmit(event) {
-  alert('Le nom a été soumis : ' + this.state.value);
-  event.preventDefault();
-}
+// handleSubmit(event) {
+//   alert('Le nom a été soumis : ' + this.state.value);
+//   event.preventDefault();
+// }
 
       const [open, setOpen] = useState(false);
 
@@ -353,11 +344,11 @@ handleSubmit(event) {
         <TableBody>
           {listAjust.map((listAjust) => (
             <TableRow
-              key={listAjust.name}
+              key={listAjust.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {produit.pilare}
+                {listAjust.pilare}
               </TableCell>
               <TableCell >{listAjust.phase}</TableCell>
               <TableCell >{listAjust.Month}</TableCell>
