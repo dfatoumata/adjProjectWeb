@@ -15,7 +15,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Success from './Success';
 import './Form.css';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import NavigationIcon from '@mui/icons-material/Navigation';
 import Modal from 'react-bootstrap/Modal';
+import Box from '@mui/material/Box';
 function FormProduit() {
 // fonction pour boite Modal derreur
 const [show, setShow] = useState(false);
@@ -26,24 +32,14 @@ const handleShow = () => setShow(true);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-
-    postData()
+postData()
     setOpen(true);
-    
-
-
   };
 
   const handleClosee = () => {
     setOpen(false);
     
   };
-  
-  
-  
-
-  
- 
     const p_pilare = useRef(null);
     const p_phase = useRef(null);
     const p_Year = useRef(null);
@@ -59,9 +55,7 @@ const handleShow = () => setShow(true);
     const fortmatResponse = (res) => {
       return JSON.stringify(res, null, 2);
     };
-
-
-    async function postData() {
+ async function postData() {
       const postData = {
         pilare: p_pilare.current.value,
         price: p_phase.current.value,
@@ -75,53 +69,27 @@ const handleShow = () => setShow(true);
   
       try {
         const res =  axios.post('https://fakestoreapi.com/products/', postData, {
-
         });
-  
-        const result = {
+         const result = {
           ajustement:  "ajouter avec success" ,
          
         };
-
         const erreur = {
           ajustement:  "erreur" ,
-         
         };
-
-     
         setPostResult(fortmatResponse(result));
         setPosterreur(fortmatResponse(erreur));
         
       } catch (erreur) {
  
-        // const result = {
-        //   status:  + "ajouter avec success" ,
-         
-        // };
-  
-       
-      }
-
-      
-    }
+      }}
   
     const clearPostOutput = (erreur) => {
       setPostResult(erreur);
     };
-
-    // const [pilare, setpilare] = useState("");
-    
-    // const [ajust, setAjust] = useState([
-    //   { id: 1, pilare: "Abricot" },
-    
-    // ]);
-   
   return (
     <div>
-    
-    <div className="card">
-       
-        { fortmatResponse && <div className="alert alert-secondary mt-2" role="alert"><pre>{fortmatResponse}</pre></div> }
+     <div className="card">
         </div>
      <div className="row mb-3">
     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">pilare</label>
@@ -177,12 +145,15 @@ const handleShow = () => setShow(true);
     <div className="col-sm-10 offset-sm-2">
     </div>
   </div>
-  <Button variant="secondary" type='submit'  onClick={handleClickOpen}>
-            Ajouter
-          </Button>
-          <Button variant="secondary" type='submit' onClick={handleShow}>
-            Ajouter
-          </Button>
+     
+          <Fab variant="extended" onClick={handleClickOpen} size="small" color="primary" aria-label="add">
+  <AddIcon sx={{ mr: 1 }} />
+  Ajouter
+</Fab>
+<Fab variant="extended"  onClick={handleShow} size="small" color="primary" aria-label="add">
+  <AddIcon sx={{ mr: 1 }} />
+  Ajouter
+</Fab>
           <Dialog
         open={open}
         // onClose={handleClose}
@@ -195,7 +166,7 @@ const handleShow = () => setShow(true);
         <DialogContent>
           <DialogContentText  id="alert-dialog-description">
     
-          { postResult && <div ><pre ClassName="a">{postResult}</pre></div> }
+          { postResult && <div ClassName="a" >{postResult}</div> }
         
           </DialogContentText>
         </DialogContent>
@@ -215,41 +186,27 @@ const handleShow = () => setShow(true);
           {"Confirmation d'Ajout"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText  id="alert-dialog-description">
-    
-          { postResult && <div ><pre ClassName="a">{postResult}</pre></div> }
-        
-          </DialogContentText>
+          <DialogContentText className='b' id="alert-dialog-description">
+          {postResult}
+         </DialogContentText>
         </DialogContent>
         <DialogActions>
-         
-       
-           <Button onClick={handleClosee}>ok</Button>
+       <Button onClick={handleClosee}>ok</Button>
         </DialogActions>
       </Dialog>
-       
-
- {/* corps modal */}
-
- <Modal show={show} onHide={handleClose}>
+      {/* corps modal */}
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Message D'erreur</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-       <br /><br /><br />
+          <p className='a'>Une erreur est survenue lors de l'ajout</p>
+          <br /><br /><br />
            <Button variant="secondary" type='submit' onClick={handleClose}>
             ok
           </Button>
         </Modal.Body>
- 
   </Modal>
-     
-
-
-
-
-
-
       </div>
 
   

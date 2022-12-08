@@ -1,6 +1,9 @@
 .App {
     text-align: center;
   }
+  .r{
+  color: #0d68e8;
+  }
   
   .App-logo {
     height: 40vmin;
@@ -12,23 +15,15 @@
       animation: App-logo-spin infinite 20s linear;
     }
   }
-  Button{
-    background: linear-gradient(rgb(11, 11, 11), rgba(235, 3, 3, 0.87));
-  }
+
   thead{
-    background-color: #817d7d82;
+    background-color: #d7d3d36f;
   }
-  .nav-link:hover{
-     background: linear-gradient(rgba(11, 11, 11, rgba(235, 3, 3, 0.6)3, 0.87));
-  }
-  .nav-link{
-    border: 1px solid #a40404c9;
-    color: black;
-  }
-  .form{
-    background-color: rgb(230, 230, 230);
-    
-  }
+ 
+.btn{
+  background-color: rgba(24, 181, 224, 0.824);
+}
+  
   .App-header {
     background: linear-gradient(rgb(11, 11, 11), rgba(235, 3, 3, 0.87));
     min-height: 100vh;
@@ -40,7 +35,7 @@
     color: white;
   }
   .TableRow{
-background-color: #98989882;
+    background-color: #dbd4d44f;
   }
   .a {
     display: flex;
@@ -61,9 +56,7 @@ background-color: #98989882;
   .App-link {
     color: #61dafb;
   }
-  .z{
-    background: linear-gradient(rgb(11, 11, 11),rgb(255, 255, 255), rgba(235, 3, 3, 0.87));
-  }
+
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

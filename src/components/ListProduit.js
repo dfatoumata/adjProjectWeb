@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Modal from 'react-bootstrap/Modal';
-import { Button } from 'react-bootstrap';
+import { Button, Navbar } from 'react-bootstrap';
 import './ListProduit.css';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -24,6 +24,12 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './ListProduit.css';
 import FormProduit from './FormProduit';
+import NavBar from './NavBar';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import NavigationIcon from '@mui/icons-material/Navigation';
+import PersonIcon from '@mui/icons-material/Person';
+import ListIcon from '@mui/icons-material/List';
 // import { green } from '@mui/material/colors';
 // import Icon from '@mui/material/Icon';
 function ListProduit() {
@@ -130,7 +136,9 @@ function ListProduit() {
     // var produit =produit
     <div>
 
-
+<div>
+  <NavBar/>
+</div>
       <Dialog
         open={open}
         // onClose={handleClose}
@@ -152,21 +160,7 @@ function ListProduit() {
           </Button>
            <Button onClick={handleClosee}>Oui</Button>
         </DialogActions>
-      </Dialog>
-      <nav class="navbar navbar-expand-lg  z">
-  <div class="container">
-    <a class="navbar-brand" href="#">home</a>
-    <a class="navbar-brand" href="#">Consult</a>
-    <a class="navbar-brand" href="#">Add</a>
-  </div>
-</nav>
-
-  <br /> <br />  <br />
-
-
-
-  
-
+      </Dialog><br /> <br /> <br />
   <table class="table table-">
   <thead>
     <tr>
@@ -239,50 +233,31 @@ function ListProduit() {
 </table>
       </div>
     </div>
-  </div><button class="btn btn-secondary dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   Ajoutement Par
-  </button>
-  <FormControl sx={{ m: 1, minWidth: 30 }}>
-        {/* <InputLabel htmlFor="grouped-native-select">Ajustement</InputLabel> */}
-        <Select native defaultValue="" id="grouped-native-select" label="Ajustement">
-          <option aria-label="None" value="" />
-          <optgroup label="Category 1">
-            <option value={1}>Entity</option>
-            <option value={2}>code</option>
-          </optgroup>
-          <optgroup label="Category 2">
-            <option value={3}>hello</option>
-            <option value={4}>node</option>
-          </optgroup>
-        </Select>
-      </FormControl>
-     
+  </div>
+   
   <div class="col-sm-6">
+
     <div>
       <div class="card-body">
         
         <table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-    
-    </tr>
-  </thead>
-  <tbody>
+<p className='r'>Ajustement Par</p>
+  <tbody>   
     <tr>
       <td scope="row">
 
-      <div class="dropdown">
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
+      <Select native defaultValue="" id="grouped-native-select" label="Ajustement">
+          <option aria-label="None" value="" />
+          <optgroup label="Code 1">
+            <option value={1}>Entity</option>
+            <option value={2}>code</option>
+          </optgroup>
+          <optgroup label="Code 2">
+            <option value={3}>hello</option>
+            <option value={4}>node</option>
+          </optgroup>
+        </Select>
       </td>
-    
-     
     </tr>
     
   </tbody>
@@ -296,7 +271,7 @@ function ListProduit() {
   <Button onClick={handleOpen}>Open modal</Button> */}
       
      
-  <thead className="form">
+ 
       <tr>
         <th>
         <nav className="navbar navbar-expand-sm navbar-">
@@ -305,27 +280,30 @@ function ListProduit() {
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span className="navbar-toggler-icon" />
     </button>
-    <div className="collapse navbar-collapse" id="mynavbar">
+    <div  id="mynavbar">
       <ul className="navbar-nav me-auto">
-        <li className="nav-item">
-          <a className="nav-link"  href="javascript:void(0)" onClick={handleShow}>ajouter</a>
-        </li>
-        <li className="nav-item"><i class="bi bi-cloud-upload-fill"></i>
-          <a className="nav-link" href="javascript:void(0)"  onClick={handleClickOpen}>charger</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="javascript:void(0)">Liste des ajustement</a>
-        </li>
+        <li >
+        <Fab variant="extended" onClick={handleShow} size="small" color="primary" aria-label="add">
+  <AddIcon sx={{ mr: 1 }} />
+  Ajouter
+</Fab></li>
+        <Fab variant="extended" onClick={handleClickOpen} size="small" color="primary" aria-label="add">
+  <NavigationIcon sx={{ mr: 1 }} />
+  charger
+</Fab>
+<Fab variant="extended" size="small" color="primary" aria-label="add">
+<ListIcon sx={{ mr: 1 }} />
+  Liste D'Ajustement
+</Fab>
       </ul>
     
     </div>
   </div>
 </nav>
-
-        </th>
+</th>
     
       </tr>
-    </thead>
+ 
   <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead sx={{  }}>
@@ -335,8 +313,6 @@ function ListProduit() {
           <TableCell >phase</TableCell>
             <TableCell >Month</TableCell>
             <TableCell >Year</TableCell>
-            
-            
             <TableCell >Cumul_type</TableCell>
             <TableCell >Data_type</TableCell>
             <TableCell >Entity</TableCell>
@@ -372,17 +348,11 @@ function ListProduit() {
           <Modal.Title>Formulaire d'Ajout</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-
        <FormProduit/>
 
         </Modal.Body>
-        
       </Modal>
-     
-
-
-
-    </div>
+ </div>
     
   )
 }

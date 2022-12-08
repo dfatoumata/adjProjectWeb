@@ -12,15 +12,16 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-const pages = ['Products', 'Pricing', 'Blog'];
+import './Nav.css';
+const pages = ['Consult', 'Home', 'Add'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const navBar = () => {
   return (
-    <div>navBar
+    <div>
 
 
-<AppBar position="static">
-      <Container maxWidth="xl">
+<AppBar  position="static">
+      <Container className='app'maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -36,6 +37,7 @@ const navBar = () => {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              
             }}
           >
             LOGO
