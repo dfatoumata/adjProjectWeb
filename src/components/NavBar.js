@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import HomeIcon from '@mui/icons-material/Home';
 import './Nav.css';
 const pages = ['Consult', 'Home', 'Add'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -129,7 +130,7 @@ const navBar = () => {
                 horizontal: 'right',
               }}
               
-            >
+            ><HomeIcon />
               {settings.map((setting) => (
                 <MenuItem key={setting} >
                   <Typography textAlign="center">{setting}</Typography>

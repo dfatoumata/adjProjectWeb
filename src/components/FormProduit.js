@@ -22,6 +22,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import Modal from 'react-bootstrap/Modal';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 function FormProduit() {
 // fonction pour boite Modal derreur
 const [show, setShow] = useState(false);
@@ -164,7 +166,11 @@ postData()
           {"Confirmation d'Ajout"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText  id="alert-dialog-description">
+          <DialogContentText ClassName="a"  id="alert-dialog-description">
+          <Stack sx={{ width: '100%' }} spacing={2}>
+      
+      <Alert severity="success">This is a success alert — check it out!</Alert>
+    </Stack>
     
           { postResult && <div ClassName="a" >{postResult}</div> }
         
@@ -187,7 +193,10 @@ postData()
         </DialogTitle>
         <DialogContent>
           <DialogContentText className='b' id="alert-dialog-description">
-          {postResult}
+          <Stack sx={{ width: '100%' }} spacing={2}>
+          <Alert severity="success">{postResult}</Alert>
+      </Stack>
+          
          </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -200,7 +209,11 @@ postData()
           <Modal.Title>Message D'erreur</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className='a'>Une erreur est survenue lors de l'ajout</p>
+        <Stack sx={{ width: '100%' }} spacing={2}>
+      <Alert severity="error">Une erreur est survenue lors de l'ajout</Alert>
+      
+    </Stack>
+         
           <br /><br /><br />
            <Button variant="secondary" type='submit' onClick={handleClose}>
             ok
