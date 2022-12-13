@@ -1,46 +1,32 @@
-import {React, useState, useEffect, useRef} from 'react'
+import {React, useState, useRef} from 'react'
 import axios from "axios";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import { Button } from 'react-bootstrap';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Success from './Success';
+import Success from './ListBox';
 import './Form.css';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import NavigationIcon from '@mui/icons-material/Navigation';
 import Modal from 'react-bootstrap/Modal';
-import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-function FormProduit() {
+import Error from './Error';
+function Form() {
 // fonction pour boite Modal derreur
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
-
  // fonction pour boite Modal confirmation
   const [open, setOpen] = useState(false);
-
   const handleClickOpen = () => {
-postData()
+    postData()
     setOpen(true);
   };
-
   const handleClosee = () => {
-    setOpen(false);
-    
+    setOpen(false);  
   };
     const p_pilare = useRef(null);
     const p_phase = useRef(null);
@@ -50,10 +36,7 @@ postData()
     const p_Data_type = useRef(null);
     const p_Entity = useRef(null);
     const p_Indicator = useRef(null);
-
-    const baseURL = 'https://fakestoreapi.com/products/';
     const [postResult, setPostResult] = useState(null);
-    const [posterreur, setPosterreur] = useState(null);
     const fortmatResponse = (res) => {
       return JSON.stringify(res, null, 2);
     };
@@ -68,31 +51,17 @@ postData()
         Entity: p_Entity.current.value,
         Indicator: p_Indicator.current.value,
       };
-  
-      try {
+    try {
         const res =  axios.post('https://fakestoreapi.com/products/', postData, {
         });
          const result = {
+          data: res.data,
           ajustement:  "ajouter avec success" ,
-         
         };
-        const erreur = {
-          ajustement:  "erreur" ,
-        };
-        setPostResult(fortmatResponse(result));
-        setPosterreur(fortmatResponse(erreur));
-        
-      } catch (erreur) {
- 
-      }}
-  
-    const clearPostOutput = (erreur) => {
-      setPostResult(erreur);
-    };
+        setPostResult(fortmatResponse(result)); 
+      } catch (erreur) {}}
   return (
     <div>
-     <div className="card">
-        </div>
      <div className="row mb-3">
     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">pilare</label>
     <div className="col-sm-10">
@@ -123,8 +92,7 @@ postData()
      <input type="text" className="form-control"  ref={p_Cumul_type}  /> 
     </div>
   </div>
-
-  <div className="row mb-3">
+<div className="row mb-3">
     <label htmlFor="inputPassword3"  className="col-sm-2 col-form-label">Data_type</label>
     <div className="col-sm-10">
     <input type="text"name="Data_type"     className="form-control"  ref={p_Data_type}  />
@@ -142,13 +110,11 @@ postData()
       <input type="text" className="form-control"    ref={p_Indicator} name="Indicator" id="inputPassword" />
     </div>
   </div>
-
-  <div className="row mb-3">
+   <div className="row mb-3">
     <div className="col-sm-10 offset-sm-2">
     </div>
   </div>
-     
-          <Fab variant="extended" onClick={handleClickOpen} size="small" color="primary" aria-label="add">
+    <Fab variant="extended" onClick={handleClickOpen} size="small" color="primary" aria-label="add">
   <AddIcon sx={{ mr: 1 }} />
   Ajouter
 </Fab>
@@ -156,38 +122,21 @@ postData()
   <AddIcon sx={{ mr: 1 }} />
   Ajouter
 </Fab>
-          <Dialog
-        open={open}
-        // onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+  <Dialog open={open} aria-labelledby="alert-dialog-title"  aria-describedby="alert-dialog-description">
         <DialogTitle id="alert-dialog-title">
           {"Confirmation d'Ajout"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText ClassName="a"  id="alert-dialog-description">
-          <Stack sx={{ width: '100%' }} spacing={2}>
-      
-      <Alert severity="success">This is a success alert — check it out!</Alert>
-    </Stack>
-    
           { postResult && <div ClassName="a" >{postResult}</div> }
-        
+          <Success/>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-         
-       
-           <Button onClick={handleClosee}>ok</Button>
+         <Button onClick={handleClosee}>ok</Button>
         </DialogActions>
       </Dialog>
-      <Dialog
-        open={open}
-        // onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+      <Dialog  open={open}  aria-labelledby="alert-dialog-title"aria-describedby="alert-dialog-description">
         <DialogTitle id="alert-dialog-title">
           {"Confirmation d'Ajout"}
         </DialogTitle>
@@ -196,36 +145,21 @@ postData()
           <Stack sx={{ width: '100%' }} spacing={2}>
           <Alert severity="success">{postResult}</Alert>
       </Stack>
-          
-         </DialogContentText>
+    </DialogContentText>
         </DialogContent>
         <DialogActions>
        <Button onClick={handleClosee}>ok</Button>
         </DialogActions>
       </Dialog>
-      {/* corps modal */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Message D'erreur</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Stack sx={{ width: '100%' }} spacing={2}>
-      <Alert severity="error">Une erreur est survenue lors de l'ajout</Alert>
-      
-    </Stack>
-         
-          <br /><br /><br />
-           <Button variant="secondary" type='submit' onClick={handleClose}>
-            ok
-          </Button>
-        </Modal.Body>
+     <Error/>
+           <Button variant="secondary" type='submit' onClick={handleClose}>ok</Button>
+    </Modal.Body>
   </Modal>
-      </div>
+      </div> )}
 
-  
-
-
-  )
-}
-
-export default FormProduit
+export default Form
