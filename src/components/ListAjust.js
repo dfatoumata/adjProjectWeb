@@ -1,5 +1,5 @@
-import {React, useState, useEffect} from 'react';
-import axios from 'axios';
+import {React, useState} from 'react';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -26,10 +26,10 @@ import ListIcon from '@mui/icons-material/List';
 function ListAjust() {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
-   setOpen(true);
+  //  setOpen(true);
  };
  const handleClosee = () => {
-   setOpen(false);
+  //  setOpen(false);
  };
    const listAjust =[
       {
@@ -43,18 +43,11 @@ function ListAjust() {
         "Entity" : "ajustement",
       },
     ];
-    const baseURL = 'https://fakestoreapi.com/products/';
-    const [produit, setProduit] = useState([]);
-    // modal
+   
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    useEffect(() => {
-        axios.get(baseURL).then(response => {
-            setProduit (response.data);
-            console.log(produit)
-        });
-      },);
+ 
   return (
     <div>
       <div>
