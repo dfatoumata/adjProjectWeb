@@ -1,0 +1,37 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+.liste{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+    /* margin-left: 20px; */
+    
+	gap: 1px; 
+	justify-content: left;
+}
+ul{
+    width: 20px;
+	background: white;
+	margin-left: 20px;
+}
+.li{
+    margin-left: 20px;
+	padding: 10px;
+    margin: 1px;
+	height: 40px;
+	width: 75px;
+    border-radius: 0 5px 0 0;
+    background: gray;
+}
+nav ul .li:hover{
+    font-weight: bold;
+	cursor: pointer;
+	color: black;
+	background: #33adff;
+}
+a {
+	list-style: none;
+}

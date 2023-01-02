@@ -1,0 +1,41 @@
+.liste {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    height: 70px;
+}
+.banner {
+    background: black;
+    margin: 0;
+    padding: auto;
+    width: 100%;
+}
+.sglogo {
+    height: 70px;
+    width: 120px;
+}
+.bannerp {
+    text-align: center;
+    margin: 15px;
+    font-weight: bold;
+    font-size: large;
+    color: crimson;
+    display: flex;
+    justify-content: center;
+}
+.usersInfo {
+    position: relative;
+    font-size: small;
+    color: white;
+    left: 380px;
+}
+.signout {
+    position: relative;
+    top: auto;
+}
+.userIcons {
+    position: relative;
+    left: 400px;
+    color: white;
+}
+
