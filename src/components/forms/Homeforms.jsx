@@ -79,9 +79,9 @@ function Homeforms() {
                     <span className='partytext'> <u>Choose a csv file to upload</u> </span>
                   </Button>
                 </label>
-                <Button className='btnmeme btn btn-danger'  component="span" onClick={(e) => {
+                <Button className='btnmeme'  component="span" onClick={(e) => {
             handleOnSubmit(e);
-          }}>submit
+          }}>Preview
                   </Button>
 
                 <br />
