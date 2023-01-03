@@ -86,7 +86,7 @@ function Homeforms() {
 
                 <br />
 
-<table>
+<table className='bulkTable'>
   <thead>
     <tr key={"header"}>
       {headerKeys.map((key) => (

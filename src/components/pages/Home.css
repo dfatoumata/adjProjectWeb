@@ -2,3 +2,139 @@
     margin: 50%;
     padding: 50%;
 }
+.titre {
+    text-align: center;
+    color:darkgray;
+    font-weight: bold;
+    
+}
+.frame1 {
+    margin: 2%;
+    border: 1px solid;
+    justify-content: center;
+    height: 360px;
+    display: flex;
+    
+}
+.description {
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 4px; 
+}
+.frame {
+    position: absolute;
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+}
+.firstCircle {
+    border-radius: 60%;
+    height: 100px;
+    width: 100px;
+    background: gray;
+    color: white;
+    font-weight: bold;
+}
+.secondCircle {
+    border-radius: 60%;
+    height: 100px;
+    width: 100px;
+    margin-left: 130px;
+    background: gray;
+    font-weight: bold;
+    color: white;
+}
+.myarrow{
+    position:absolute;
+    margin-left: 130px;
+    /* bottom:0; */
+    transform: rotate(90deg);
+  }
+  .line {
+    border-right: 0.2rem solid #4EF107;
+    display:inline-block;
+    height:5rem;
+  }
+  .arrow{
+  position:absolute;
+    top:-0.3rem;
+    bottom:0;
+    height:1rem;
+    border-right: 0.2rem solid #4EF107;
+    display: inline-block;
+  }
+  .right{
+    left:0.3rem;
+    transform: rotate(-45deg);
+  }
+  .left{
+    right:0.3rem;
+    transform: rotate(45deg);
+  }
+  .diamond {
+    width: 0;
+    height: 0;
+    margin-left: 82px;
+    border: 50px solid transparent;
+    border-bottom-color: #4EF107;
+    position: relative;
+    top: -50px;
+  }
+  .diamond:after {
+    content: '';
+    position: absolute;
+    left: -50px;
+    top: 50px;
+    width: 0;
+    height: 0;
+    /* margin-left: 5px; */
+    border: 50px solid transparent;
+    border-top-color: #4EF107;
+  }
+  .diamonda {
+    width: 0;
+    height: 0;
+    margin-left: 300px;
+    border: 50px solid transparent;
+    border-bottom-color: #4EF107;
+    position: relative;
+    top: -50px;
+  }
+  .diamonda:after {
+    content: '';
+    /* margin-left: 300px; */
+    position: absolute;
+    left: -50px;
+    top: 50px;
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-top-color: #4EF107;
+  }
+  .myarrow2{
+    position:absolute;
+    top:0;
+    bottom:0;
+    transform: rotate(90deg);
+  }
+  .line2 {
+    border-right: 0.2rem solid #4EF107;
+    display:inline-block;
+    height:5rem;
+  }
+  .arrow2{
+  position:absolute;
+    top:-0.3rem;
+    bottom:0;
+    height:1rem;
+    border-right: 0.2rem solid #4EF107;
+    display: inline-block;
+  }
+  .right2{
+    left:0.3rem;
+    transform: rotate(-45deg);
+  }
+  .left2{
+    right:0.3rem;
+    transform: rotate(45deg);
+  }

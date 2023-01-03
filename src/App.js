@@ -8,12 +8,14 @@ import Manulaprev from './components/forms/Manulaprev';
 import Addform from './components/forms/Addform';
 
 import './App.css';
+import Consult from './components/forms/Consult';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
           <Route path='/' element={<Home />}/>
+          <Route path='/consult' element={<Consult />}/>
           <Route path='/add' element={<Addform /> } />
           <Route path='added' element={<Add/>} />
           <Route path='/manual' element={<Manual/>}/>
