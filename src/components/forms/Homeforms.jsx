@@ -4,12 +4,15 @@ import Button from '@mui/material/Button';
 import './Homeforms.scss'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import {Modal, Table} from 'react-bootstrap';
 
 
 function Homeforms() {
   const [showhide, setShowhide] = useState('')
   const [file, setFile] = useState();
   const [array, setArray] = useState([]);
+  // for show modal charged csv file
+  const [lgShow, setLgShow] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,6 +32,8 @@ function Homeforms() {
   const handleOnChange = (e) => {
     setFile(e.target.files[0]);
   };
+
+
 
   const csvFileToArray = string => {
     const csvHeader = string.slice(0, string.indexOf("\n")).split(",");
@@ -67,6 +72,7 @@ function Homeforms() {
       <div>
         <form className='formte' >
               <select className='form-control' onChange={(e)=>(handleshowhide(e))}>
+              <option value="/bulk">   --------------    Choose type adjustement    ------------- </option>
                   <option value="/bulk">Bulk </option>
                   <option value="/manual">Manual</option>
               </select>
@@ -87,31 +93,46 @@ function Homeforms() {
                     <span className='partytext'> <u>Choose a csv file to upload</u> </span>
                   </Button>
                 </label>
-                <Button className='btnmeme'  component="span" onClick={(e) => {
-                     handleOnSubmit(e);}}>Preview
+                <Button className='btnmeme' onClick={(e) => {handleOnSubmit(e); setLgShow(true)}}>Preview
                 </Button>
 
+                <Modal
+                    size="lg"
+                    show={lgShow}
+                    onHide={() => setLgShow(false)}
+                    aria-labelledby="example-modal-sizes-title-lg"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title id="example-modal-sizes-title-lg">
+                      Adjustement charged
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                      <Button className='matn' variant="outlined" color="success" style={{float: "right", marginBottom: '10px', fontWeight: 'bold', borderRadius: '15px'}} >Your adjustement charged successfull</Button>{' '}
+                      <Table striped bordered hover>
+                        <thead>
+                          <tr key={"header"}>
+                            {headerKeys.map((key) => (
+                              <th>{key}</th>
+                            ))}
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          {array.map((item) => (
+                            <tr key={item.id}>
+                              {Object.values(item).map((val) => (
+                                <td>{val}</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                      <Button variant="contained" color="error" style={{float: "right", marginBottom: '2px'}} >Submit</Button>                
+                  </Modal.Body>
+                </Modal>
+
                 <br />
-
-<table className=''>
-  <thead>
-    <tr key={"header"}>
-      {headerKeys.map((key) => (
-        <th>{key}</th>
-      ))}
-    </tr>
-  </thead>
-
-  <tbody>
-    {array.map((item) => (
-      <tr key={item.id}>
-        {Object.values(item).map((val) => (
-          <td>{val}</td>
-        ))}
-      </tr>
-    ))}
-  </tbody>
-</table>
 
               </div>
             )
@@ -129,35 +150,11 @@ function Homeforms() {
                 />
                 <label htmlFor="contained-button-file"  className='lable' onClick={navigateToAddAdjustement}>
                   <Button className='btnmeme'  component="span" onClick={(e) => {
-            handleOnSubmit(e);
-          }}>
+                    handleOnSubmit(e); }}>
                     <ControlPointIcon className='addedicon'/>
                     <span className='partytext'> <a href="/add"><u>add your adjustement here</u></a>  </span>
                   </Button>
                 </label>
-
-                <br />
-
-                <table>
-                  <thead>
-                    <tr key={"header"}>
-                      {headerKeys.map((key) => (
-                        <th>{key}</th>
-                      ))}
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {array.map((item) => (
-                      <tr key={item.id}>
-                        {Object.values(item).map((val) => (
-                          <td>{val}</td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-
               </div>
             )
           }
