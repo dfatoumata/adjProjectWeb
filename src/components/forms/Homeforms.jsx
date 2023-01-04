@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import Button from '@mui/material/Button';
 import './Homeforms.scss'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
@@ -9,6 +10,13 @@ function Homeforms() {
   const [showhide, setShowhide] = useState('')
   const [file, setFile] = useState();
   const [array, setArray] = useState([]);
+
+  const navigate = useNavigate();
+
+  const navigateToAddAdjustement = () => {
+    // 👇️ navigate to /contacts
+    navigate('/add');
+  };
 
   const handleshowhide = (e) => {
       const optionschoose = e.target.value;
@@ -80,13 +88,12 @@ function Homeforms() {
                   </Button>
                 </label>
                 <Button className='btnmeme'  component="span" onClick={(e) => {
-            handleOnSubmit(e);
-          }}>Preview
-                  </Button>
+                     handleOnSubmit(e);}}>Preview
+                </Button>
 
                 <br />
 
-<table className='bulkTable'>
+<table className=''>
   <thead>
     <tr key={"header"}>
       {headerKeys.map((key) => (
@@ -120,36 +127,36 @@ function Homeforms() {
                   id="contained-button-file"
                   onChange={handleOnChange}
                 />
-                <label htmlFor="contained-button-file"  className='lable'>
+                <label htmlFor="contained-button-file"  className='lable' onClick={navigateToAddAdjustement}>
                   <Button className='btnmeme'  component="span" onClick={(e) => {
             handleOnSubmit(e);
           }}>
                     <ControlPointIcon className='addedicon'/>
-                    <span className='partytext'> <u>add your adjustement here</u> </span>
+                    <span className='partytext'> <a href="/add"><u>add your adjustement here</u></a>  </span>
                   </Button>
                 </label>
 
                 <br />
 
-<table>
-  <thead>
-    <tr key={"header"}>
-      {headerKeys.map((key) => (
-        <th>{key}</th>
-      ))}
-    </tr>
-  </thead>
+                <table>
+                  <thead>
+                    <tr key={"header"}>
+                      {headerKeys.map((key) => (
+                        <th>{key}</th>
+                      ))}
+                    </tr>
+                  </thead>
 
-  <tbody>
-    {array.map((item) => (
-      <tr key={item.id}>
-        {Object.values(item).map((val) => (
-          <td>{val}</td>
-        ))}
-      </tr>
-    ))}
-  </tbody>
-</table>
+                  <tbody>
+                    {array.map((item) => (
+                      <tr key={item.id}>
+                        {Object.values(item).map((val) => (
+                          <td>{val}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
 
               </div>
             )

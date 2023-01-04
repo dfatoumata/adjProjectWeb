@@ -10,7 +10,7 @@ function Menu() {
             <ul className="liste">
                 <li className="li"> <a href='/'>Home</a> </li>
                 <li className="li"> <a href='/consult'>Consult</a> </li>
-                <li className="li"> <a href='/add'> Add</a></li>
+                <li className="li"> <a href='/added'> Add</a></li>
             </ul>
     	</nav>
     </div>
