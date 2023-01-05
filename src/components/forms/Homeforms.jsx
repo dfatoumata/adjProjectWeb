@@ -5,6 +5,8 @@ import './Homeforms.scss'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {Modal, Table} from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Homeforms() {
@@ -13,6 +15,27 @@ function Homeforms() {
   const [array, setArray] = useState([]);
   // for show modal charged csv file
   const [lgShow, setLgShow] = useState(false);
+
+  
+  const notify = () => {
+    setTimeout(() => {
+      setLgShow(false)
+    }, 5000);
+    toast.success(' Your adjustement charged successfull', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    pauseOnFocusLoss: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+    
+  }
+
+  
 
   const navigate = useNavigate();
 
@@ -32,7 +55,6 @@ function Homeforms() {
   const handleOnChange = (e) => {
     setFile(e.target.files[0]);
   };
-
 
 
   const csvFileToArray = string => {
@@ -108,7 +130,7 @@ function Homeforms() {
                     </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                      <Button className='matn' variant="outlined" color="success" style={{float: "right", marginBottom: '10px', fontWeight: 'bold', borderRadius: '15px'}} >Your adjustement charged successfull</Button>{' '}
+                      {/* <Button className='matn' variant="outlined" color="success" style={{float: "right", marginBottom: '10px', fontWeight: 'bold', borderRadius: '15px'}} >Your adjustement charged successfull</Button>{' '} */}
                       <Table striped bordered hover>
                         <thead>
                           <tr key={"header"}>
@@ -128,8 +150,11 @@ function Homeforms() {
                           ))}
                         </tbody>
                       </Table>
-                      <Button variant="contained" color="error" style={{float: "right", marginBottom: '2px'}} >Submit</Button>                
+                      <Button variant="contained" color="error" onClick={notify} style={{float: "right", marginBottom: '2px'}} > Submit</Button><ToastContainer icon={true} autoClose={5000}/>                
                   </Modal.Body>
+                  <Modal.Footer>
+                  
+                  </Modal.Footer>
                 </Modal>
 
                 <br />
